@@ -13,3 +13,4 @@ if __name__ == "__main__":
     fn = 'camelot.txt'
     with open(fn, 'r') as f:
         for anything in f:
+            print anything
