@@ -1,0 +1,142 @@
+\documentclass{article}
+\usepackage{hyperref}
+\usepackage{rotating}
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{geometry}
+\geometry{letterpaper,tmargin=2.54cm,bmargin=2.54cm,lmargin=2.54cm,rmargin=2.54cm} 
+
+
+\begin{document}
+
+\title{Programming Assignment 2 - Population Structure}
+
+\author{COMSCI/HUMGEN 124/224}
+
+\date{Due: May 13, 2016, 11:59 pm}
+
+\maketitle
+
+This short programming assignment is designed to help you get an
+understanding for the basics of population structure present in
+human genetic data from a computational perspective. We have taken
+the data from the 1000 Genomes Project, which sequenced a 30-60
+individuals in about 20 populations all over the world. The populations
+themselves are incredibly diverse, including poeple of Yoruba
+descent in Nigeria, Han Chinese living in Beijing,
+Gujarati Indians living in Houston, Italians in Tuscany,
+Finns in Finland, and Americans of African and European descent.
+I encourage you to explore \url{http://www.1000genomes.org} to
+find out more about this incredibly important project in a very
+active research area. The 1000 genomes were fully ascertained in 2015,
+and projects involving 100,000 or more genomes (for example
+Genomics England's \url{http://www.genomicsengland.co.uk}) are now underway.
+
+You can use any language for this project,
+though Python and R are recommended. You will
+need to submit your code along with your results file through CCLE.
+
+
+\section*{Computing the Kinship Matrix}
+
+\subsection*{Reading the input}
+The data for this programming assignment consists of a matrix
+of 2,000 individuals and 1,000 SNPs. Unzip the file \verb!PopSNPs.zip!,
+and you'll see a space-separated text file.
+Each column of the input represents the number of copies of a single SNP, and each row
+represents an individual. Each element in the matrix represents
+the number of copies of a single SNP an individual has.
+
+Your code for programming project 1 will come in handy here.
+The data is also much more reasonably-sized, so the results
+should generate much faster. If you've forgotten everything,
+start with the documentation for \verb!pandas read_csv!,
+or R's \texttt{read.table}. And don't forget to keep sharpening
+your skills at using Googe to answer programming questions for you.
+
+
+\subsection*{Part A - Standardizing Data}
+The first step in this process will be to standardize the input data.
+Standardization of data (sometimes also referred to as "normalization")
+involves applying a linear function to the data so that it has mean 0
+and variance 1.
+
+There are libraries that will do this for you; look in Python \verb!scikit-learn!'s
+\verb!preprocessing! module, and R has a builtin \verb!scale! method that
+can be applied well here.
+
+Standardizing the data isn't important for computing the kinship matrix
+in the next step, but it's critically important for performing clustering
+
+\subsection*{Part B - Kinship Matrix}
+Our next job is to discover how closely related everyone
+is to everyone else in our dataset.
+\vspace{1.5 cm}
+
+\subsection*{Part C - Clustering}
+
+\subsection*{Part D - Visualization (required for grads, optional for undergrads)}
+
+For grads, your final task is to visualize the clustering data you have made in part (C)
+and post it to the forums. Some good examples of
+
+\subsection*{Part E - Forums (required for undergrads, optional for grads)}
+
+
+
+\clearpage
+\subsection*{Part F - Output Format}
+The most important part of this assignment is that you
+input and output data in the proper format. The first line
+should be your UID; it is recommended that you also put
+your UID in the title of your file, but it's not required.
+
+\begin{verbatim}
+UID:{Your UID}
+email:{Your email}
+Undergrad or Grad:{Grad if you're a graduate student, undergrad otherwise}
+<A>
+{SNPNAME}:{RAW-P-VALUE}
+{SNPNAME}:{RAW-P-VALUE}
+{SNPNAME}:{RAW-P-VALUE}
+...
+</A>
+<B>
+{SIGNIFICANT-SNP1}
+{SIGNIFICANT-SNP2}
+...
+</B>
+<C>
+Lambda_gc:<Lambda Value>
+</C>
+\end{verbatim}
+
+If I were to submit an assignment, my output
+would look something like this:
+
+\begin{verbatim}
+UID:123456789
+email:bilow@cs.ucla.edu
+Undergrad or Grad:Grad
+<A>
+SNP0000:0.175
+SNP0001:0.875
+SNP0002:0.0003
+...
+</A>
+<B>
+SNP0002
+...
+</B>
+<C>
+Lambda_gc:1.872
+</C>
+\end{verbatim}
+
+
+\clearpage
+
+
+
+
+\end{document}
