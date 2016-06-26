@@ -3,6 +3,7 @@ exams/*
 Final_Project_Data/*
 Final_Project_Solutions/*
 Final Projects/*/*/*/*.txt
+PAs/solutions/*
 *.aux
 *.log
 *.out
