@@ -72,8 +72,6 @@ def make_individuals():
     with zipfile.ZipFile('SNP_Status.zip', 'w') as myzip:
         myzip.write('SNP_status.txt')
     print output_df.head()
-
-
     return output_cases, output_controls
 
 
@@ -89,6 +87,7 @@ def make_corr_mat(corr_size):
     print corr_mat.max()
     return
 
+
 def make_weak_corr_mat(corr_size):
     raw_corr_mats = [np.ones((corr_size, corr_size)) * float(i)/10 for i in range(10)]
     corr_mats = [np.maximum(_, np.eye(corr_size)) for _ in raw_corr_mats]
@@ -97,6 +96,7 @@ def make_weak_corr_mat(corr_size):
     output_corr_mat_sqrts = [corr_mat_sqrts[_] for _ in output_corr_mats]
     output_corr_mat_sqrt = block_diag(output_corr_mat_sqrts)
     return output_corr_mat_sqrt
+
 
 def print_params():
     gl_dict = globals().copy()
@@ -114,7 +114,7 @@ if __name__ == "__main__":
 
     CASE_THRESHOLD = norm.ppf(1.0 - DISEASE_FREQUENCY)
 
-    CORRELATION_SIZE = 100
+    CORRELATION_SIZE = 1000
 
     if MAKE_CORRS:
         CORR_MAT_SQRT = make_weak_corr_mat(CORRELATION_SIZE)
@@ -131,7 +131,7 @@ if __name__ == "__main__":
     SNP_THRESHOLDS = np.array([np.array([norm.ppf((1.0 - maf)**2), norm.ppf(1.0 - maf**2)]) for maf in MAFS])
     print SNP_THRESHOLDS[:10]
 
-    EFFECT_SIZES = np.random.permutation(np.concatenate((norm.rvs(0, .2, N_SNPS/1000), np.zeros(999*N_SNPS/1000))))
+    EFFECT_SIZES = np.random.permutation(np.concatenate((norm.rvs(0, .3, N_SNPS/1000), np.zeros(999*N_SNPS/1000))))
     # print_params()
     with open('true_effect_sizes.txt', 'w') as f:
         for _ in EFFECT_SIZES:
